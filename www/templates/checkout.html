@@ -78,6 +78,9 @@
             </label> -->
 
             <label class="item item-input item-floating-label">
+                <textarea rows="10" autocomplete="off" class="form-control" name="post_urls" disabled>{{getSelectedPostUrls()}}</textarea>
+            </label>
+            <label class="item item-input item-floating-label">
                 <textarea rows="3" autocomplete="off" class="form-control" name="note" placeholder="{{$root.Dict.TXT_NOTE}}" ng-model="tmp.note"></textarea>
             </label>
         </div>

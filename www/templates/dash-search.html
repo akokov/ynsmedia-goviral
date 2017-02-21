@@ -1,48 +1,55 @@
 <ion-modal-view class="search">
     <div class="item-input-inset bar-header">
-      <label class="item-input-wrapper">
-        <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model="searchParams.q">
-    </label>
-    <button class="button button-light button-small button-clear" ng-click="search()">
-        Search
-    </button>
-    <button class="button button-light button-small button-clear" ng-click="closeModal()">
-        {{$root.Dict.TXT_CLOSE}}
-    </button>
-</div>
-<ion-content class="has-header has-footer">
-<div ng-if="data && data.length > 0">
-    <div ng-repeat="post in data" >
-        <div class="postbuzz post-block-view" ng-click="selectItem(post)" ng-class="{selected: post.selected}">
-          <!-- <div class="post-social-icon googleplus-network-img" title="Posted in Google+"></div> -->
-          <div class="post-top-wrap">
-            <div class="userinfobuzz" ng-if="post.user">
-              <div class="imagebuzz" ng-if="post.user.image">
-                  <img ng-src="{{post.user.image}}">
-              </div>
-          </div>
-          <div class="post-meta-wrap">
-              <div class="userlink">
-                  <a target="_blank" ng-href="post.user.url">{{post.user.name}}</a>
-              </div>
-              <div class="post-meta-time">Posted {{post.postedDate | date: 'hh:mm a dd MMM yyyy'}}</div>
-          </div>
-      </div>
-      <div class="messagebuzz">
-        <span>{{post.text}}</span>
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="searchParams.q">
+        </label>
+        <button class="button button-light button-small button-clear" ng-click="search()">
+            Search
+        </button>
+        <button class="button button-light button-small button-clear" ng-click="clearResults()">
+            Clear
+        </button>
+        <button class="button button-light button-small icon ion-close" ng-click="closeModal()"></button>
     </div>
-        <div class="bigimagebuzz" ng-if=post.image>
-            <img ng-src="{{post.image}}">
+    <div class="bar-subheader">
+        <button class="button icon ion-social-twitter"></button>
+        <button class="button icon ion-social-instagram"></button>
+        <button class="button icon ion-social-youtube"></button>
+    </div>
+
+    <ion-content class="has-header has-footer">
+        <div ng-if="data && data.length > 0">
+            <div ng-repeat="post in data">
+                <div class="postbuzz post-block-view" ng-click="selectItem(post)" ng-class="{selected: post.selected}">
+                    <!-- <div class="post-social-icon googleplus-network-img" title="Posted in Google+"></div> -->
+                    <div class="post-top-wrap">
+                        <div class="userinfobuzz" ng-if="post.user">
+                            <div class="imagebuzz" ng-if="post.user.image">
+                                <img ng-src="{{post.user.image}}">
+                            </div>
+                        </div>
+                        <div class="post-meta-wrap">
+                            <div class="userlink">
+                                <a target="_blank" ng-href="post.user.url">{{post.user.name}}</a>
+                            </div>
+                            <div class="post-meta-time">Posted {{post.postedDate | date: 'hh:mm a dd MMM yyyy'}}</div>
+                        </div>
+                    </div>
+                    <div class="messagebuzz">
+                        <span>{{post.text}}</span>
+                    </div>
+                    <div class="bigimagebuzz" ng-if=post.image>
+                        <img ng-src="{{post.image}}">
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-    </div>
 
-</div>
-
-</div>
-
-</ion-content>
-<ion-footer-bar ng-if="data && data.length > 0">
-    <button ng-disabled="!selectedPostsCount" ng-click="goNext()" class="button button-energized">Next</button>
-</ion-footer-bar>
+    </ion-content>
+    <ion-footer-bar ng-if="data && data.length > 0">
+        <button ng-disabled="!selectedPostsCount" ng-click="goNext()" class="button button-energized">Next</button>
+    </ion-footer-bar>
 </ion-modal-view>
