@@ -1,0 +1,797 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Ionstore - Ionic Premium Woocommerce Full App Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		body{
+			background: #f1f1f1;
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			padding: 0 25px;
+			background: #fff;
+			width: 800px;
+		}
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		.img-res{width: 100%; }
+		img {border: 1px solid #000;}
+		ul.demo {
+		    margin: 0 0 30px;
+		    overflow: hidden;
+		}
+		ul.demo li{
+			float: left;
+			width: 50%;
+			list-style: none;
+		}
+		ul.demo li a{
+			text-align: center;
+			background: #f2f2f2;
+			display: block;
+			border: 1px solid #ccc;
+		}
+	</style>
+
+	<link rel="stylesheet" href="syntax/styles/shCore.css" type="text/css">
+	<link rel="stylesheet" href="syntax/styles/shThemeDefault.css" type="text/css">
+	<script src="syntax/scripts/shCore.js"></script>
+	<script src="syntax/scripts/shBrushJScript.js"></script>
+	<script src="syntax/scripts/shBrushXml.js"></script>
+	<script src="syntax/scripts/shBrushCss.js"></script>
+	<script type="text/javascript">
+     SyntaxHighlighter.all()
+	</script>
+</head>
+
+
+<body>
+	<div class="container">
+
+		<h3 class="center alt">&ldquo;Ionstore&rdquo; Documentation by &ldquo;Ionic Premium&rdquo; v2.1.4</h3>
+
+		<hr>
+
+		<h1 class="center">&ldquo;Ionstore - Ionic Premium Woocommerce Full App&rdquo;</h1>
+
+		<hr>
+
+		<h2 align="center" style="margin: 0 -25px 20px;">
+			<a href="https://goo.gl/MwKI0P" title="Ionstore - Ionic Premium WooCommerce" target="_blank"><img class="img-res" src="assets/images/preview.jpg" style="border:none;" alt="Ionstore - Ionic Premium Woocommerce Full App" /></a>
+		</h2>
+
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Updated: December 23, 2016<br>
+					By: <a href="http://www.ionicpremium.com" alt="Ionic Premium Themes and Starter">Ionic Premium</a><br>
+					Email: <a href="mailto:ionicpremium@gmail.com">ionicpremium@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->
+
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing <b>Ionstore - Ionic Premium Woocommerce Full App</b>. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/ionicpremium">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+
+		<hr>
+
+		<ul class="demo">
+			<li><a href="https://youtu.be/hX4otNB0MBc" target="_blank"><img src="assets/images/demo.png" alt="Demo in Youtube" /></a></li>
+			<li><a href="https://play.google.com/store/apps/details?id=ionstore.ionicpremium.app" target="_blank"><img src="assets/images/playstore.png" alt="Demo in Playstore" /></a></li>
+		</ul>
+
+		<a href="https://goo.gl/MwKI0P" title="Ionstore - Ionic Premium WooCommerce" target="_blank"><img src="assets/images/new-features.jpg" alt="Ionstore - Ionic Premium WooCommerce" class="img-res"></a>
+
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#intro">Introduction</a></li>
+			<li><a href="#requirements">Requirements</a></li>
+			<li><a href="#folder">Folder Structure</a></li>
+			<li><a href="#getstart">Getting Started</a>
+				<ul>
+					<li>D.1 <a href="#extractProject">Extracting Zip Package</a></li>
+					<li>D.2 <a href="#installIonic">Installing Ionic Framework</a></li>
+					<li>D.3 <a href="#appConfiguration">App Configuration</a></li>
+					<li>D.4 <a href="#addPlatforms">Add Platforms</a></li
+					<li>D.5 <a href="#runBrowser">Run on Browser</a></li>
+					<li>D.6 <a href="#androidSDKMac">Android SDK for Mac</a></li>
+					<li>D.7 <a href="#androidSDKWindows">Android SDK for Windows</a></li>
+					<li>D.8 <a href="#buildRunAndroid">Build and Run on Android</a></li>
+					<li>D.9 <a href="#buildRunIOS">Build and Run on iOS</a></li>
+				</ul>
+			</li>
+			<li><a href="#woo">Woocommerce</a>
+				<ul>
+					<li>E.1 <a href="#wooInstall">Installation</a></li>
+					<li>E.2 <a href="#wooConf">Configuration</a></li>
+					<li>E.3 <a href="#wooImport">Import Dummy Data</a></li>
+					<li>E.4 <a href="#wooShip">Shipping</a></li>
+					<li>E.5 <a href="#wooPay">Payment</a></li>
+					<li>E.6 <a href="#wooAPI">Rest API</a></li>
+				</ul>
+			</li>
+			<li><a href="#jsonAPI">JSON API & JSON User Plugins</a>
+				<ul>
+					<li>F.1 <a href="#jsonAPIInstall">Installation</a></li>
+					<li>F.2 <a href="#jsonAPIConf">Configuration</a></li>
+				</ul>
+			</li>
+			<li><a href="#oneSignal">OneSignal Push Notification</a>
+				<ul>
+					<li>G.1 <a href="#googleAPI">Google API Registration</a></li>
+					<li>G.2 <a href="#oneSignalConf">Android Configuration</a></li>
+					<li>G.3 <a href="#oneSignalSend">Send Push Notification</a></li>
+				</ul>
+			</li>
+			<li><a href="#paypal">Paypal (only works on real device)</a>
+				<ul>
+					<li>H.1 <a href="#paypalSand">Sandbox Account</a></li>
+					<li>H.2 <a href="#paypalReg">Create App & Sandbox Mode</a></li>
+					<li>H.3 <a href="#paypalProd">Live/Production Mode</a></li>
+				</ul>
+			</li>
+			<li><a href="#slider">Slider Revolution Plugin</a>
+				<ul>
+					<li>I.1 <a href="#sliderInstall">Installation</a></li>
+					<li>I.2 <a href="#sliderAPI">Setup API</a></li>
+					<il>I.3 <a href="#sliderUpload">Upload API File into Your Server</a></il>
+				</ul>
+			</li>
+			<li><a href="#razor">RazorPay for India Only (Currency: Rupee)</a>
+				<ul>
+					<li>J.1 <a href="#razorIns">Installation</a>
+					<li>J.2 <a href="#razorReg">Registration </a>
+					<li>J.3 <a href="#razorTest">Get the Key (for <b>Test Mode</b>)</a></li>
+					<li>J.4 <a href="#razorLive">Get the Key (for <b>Live Mode</b>)</a></li>
+				</ul>
+			</li>
+
+			<li><a href="#ref">References</a> </li>
+			<li><a href="#support">Support</a> </li>
+			<li><a href="#faq">FAQs</a> </li>
+			<li><a href="#credit">Sources & Credits</a> </li>
+			<li><a href="#version">Version History</a> </li>
+		</ol>
+
+		<hr>
+
+		<h3 id="intro"><strong>A) Introduction</strong> - <a href="#toc">top</a></h3>
+		<p><strong><a href="http://ionstore.ionicpremium.com/" target="_blank">Ionstore</strong></a> is an Ionic WooCommerce Full Application based on Android and iOS. As we know that WooCommerce has been used by 30% eCommerce worldwide nowadays. We create this app to easily connecting your WooCommerce website with hybrid mobile application (Android & iOS). Just follow our getting started and video guide and your app is ready to run.</p>
+		<p>In this beta version, we include some features that will bring your business into the apps. You can manage your products, categories and orders from WooCommerce dashboard and it will connect with the apps. We add PayPal as your payment method and some method for shipping. Your customer can use quick search from the app to quickly find the wanted product. We also add signin and signup feature.</p>
+		<p></p>
+		<p>We still have a very huge homework to make this app work perfect for your business. So, don't be hesitate to contact us and tell us what feature do you need. We will keep update this project and keep learning to the next project. If you have any question to ask, feel free to <a href="http://codecanyon.com/user/ionicpremium" target="_blank">contact us</a>.</p>
+		<p>Thanks!</p>
+		<hr>
+
+		<h3 id="requirements"><strong>B) Requirements</strong> - <a href="#toc">top</a></h3>
+		<p>Here is what you need:</p>
+		<ol>
+			<li>WooCommerce
+			<li>PayPal account</li>
+		</ol>
+
+		<hr>
+
+		<h3 id="folder"><strong>C) Folder Structure</strong> - <a href="#toc">top</a></h3>
+		<p>When you extract the zip package, you will find this:</p>
+		<ul>
+			<li>Folder <b>Ionstore</b>: Our main project files</li>
+			<li>Folder <b>Documentation</b>: Our documentation details</li>
+			<li>Folder <b>API</b>: API for slider</li>
+			<li>File <b>README</b>: You should read this first</li>
+		</ul>
+
+		<hr>
+
+		<h3 id="getstart"><strong>D) Getting Started</strong> - <a href="#toc">top</a></h3>
+		<p>Please follow these step to get the app work. You can also watch our video tutorial below to get started.</p>
+		<iframe width="800" height="400" src="https://www.youtube.com/embed/BurDH9BtF6s" frameborder="0" allowfullscreen></iframe>
+		<hr>
+		<h3 id="extractProject">D.1) Extracting Zip Package - <a href="#toc">top</a></h3>
+		<p>After you download the <b>Ionstore</b> zip package, extract <b>Ionstore</b> folder to your local computer directory path.</p>
+		<hr>
+		<h3 id="installIonic">D.2) Installing Ionic Framework - <a href="#toc">top</a></h3>
+		<p>To run this Ionic, you have to install <a href="http://ionicframework.com">Ionic Framework</a> by following this step. Download and install devendable version of  <a href="http://nodejs.org/">node.js</a>. Then open your <b>cmd.exe</b> for windows or <b>Terminal</b> for mac and run:</p>
+		<pre class="brush: js; ruler: true;">
+			npm install -g cordova ionic</pre>
+		<p>If you use mac, don’t forget to use sudo:</p>
+		<pre class="brush: js; ruler: true;">
+			sudo npm install -g cordova ionic</pre>
+		<p>Ionic and cordova are now ready on your computer.</p>
+		<hr>
+		<h3 id="appConfiguration">D.3) App Configuration - <a href="#toc">top</a></h3>
+		<p>Setup your app by changing <b>AppName</b>, <b>URL</b>, <b>ConsumerKey</b> & <b>ConsumerSecret</b>, <b>OneSignal ID</b>, <b>Paypal Key</b> in <b>config.js</b> file with your own.</p>
+
+		<p>You can enable / disable currency format for your product price. If you want to enable currency format (eq: $ for USD), please set the <b>CurrencyFormat</b> variable in <b>config.js</b> to <b>true</b>.</p>
+
+		<p>Now, you can easily set the currency number decimal from your <b>WooCommerce</b> -> <b>Settings</b>. It will be connecting with your app.</p>
+		
+		<hr>
+		<h3 id="addPlatforms">D.4) Add Platforms - <a href="#toc">top</a></h3>
+		<p>Next step is we have to tell the Ionic that we want to enable the Android and iOS platform. Open your <b>cmd.exe</b> for windows or <b>Terminal</b> for mac and run</p>
+		<pre class="brush: js; ruler: true;">
+			cd Ionstore
+			ionic platform add ios
+			ionic platform add android </pre>
+		<p><b>Note:</b> Unless you are on Mac, leave out the iOS platform</p>
+		<hr>
+		<h3 id="runBrowser">D.5) Run on Browser - <a href="#toc">top</a></h3>
+		<p>Now, we have completed all of requirements to run our apps. First, we will run app on browser by run:</p>
+		<pre class="brush: js; ruler: true;">
+			cd Ionstore
+			ionic serve --lab</pre>
+		<img class="img-res" src="assets/images/run-browser.png" alt="Ionstore on browser"/>
+		<p>When you run your app on browser, it will be CORS issue happen. This issue is only happen on your browser, not in your apps. To solve this problem, you can install Chrome extension: <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en" target="_blank">Allow-Control-Allow-Origin</a> and enable the cross-origin.</p>
+		<p>Now, you app is on chrome browser and running well.<br><b>Note:</b> All of hardware plugin will not work on browser.</p>
+		<hr>
+		<h3 id="androidSDKMac">D.6) Android SDK for Mac- <a href="#toc">top</a></h3>
+		<p>In order to run this app on Android, you have to install Android SDK and some extras. Follow this step:</p>
+		<ol>
+			<li>Download <a href="https://developer.android.com/studio/index.html">Android Studio</a> for your Mac OS X and install
+				<img class="img-res" src="assets/images/android-sdk.png" alt="Download Android Studio for Mac" /></li>
+				<li>After installation finished, open Android Studio & select <b>Preferences</b>
+					<img class="img-res" src="assets/images/select-preferences.png" alt="Select Preferences on Android Studio" />
+				</li>
+				<li>Launch standalone SDK Manager
+					<img class="img-res" src="assets/images/launch-sdk.png" alt="Launch SDK Manager" /></li>
+				<li>Install <b>Tools</b>, <b>Android 6.0 (API 23)</b> and some <b>Extras</b> as below
+					<img class="img-res" src="assets/images/install-android60.png" alt="Installing Android Platform" /></li>
+		</ol>
+		<p>It may take times untill the installation finish. After finish, close SDK Manager.</p>
+		<hr>
+		<h3 id="androidSDKWindows">D.7) Android SDK for Windows - <a href="#toc">top</a></h3>
+		<p>In order to run this app on Android, you have to install Android SDK and some extras. Follow this step:</p>
+		<ol>
+			<li>Download <a href="https://developer.android.com/studio/index.html#downloads">Android SDK</a> (not Android Studio) for your Windows and install
+				<img class="img-res" src="assets/images/android-sdk-windows.png" alt="Download Android Studio for Windows" /></li>
+				<li>After installation finished, open <b>SDK Manager</b>
+					<img class="img-res" src="assets/images/open-sdk-manager.png" alt="Open SDK Manager" />
+				</li>
+				<li>Install <b>Tools</b>, <b>Android 6.0 (API 23)</b> and some <b>Extras</b> as below
+					<img class="img-res" src="assets/images/install-android60-windows.png" alt="Installing Android Platform" /></li>
+		</ol>
+		<p>It may take times untill the installation finish. After finish, close SDK Manager. Then you have to setting the environment variables, check the reference below.</p>
+		<ul>
+			<li><a href="http://learn.ionicframework.com/videos/windows-android/">Installing Android on Windows</a></li>
+			<li><a href="https://www.youtube.com/watch?v=RNrNIHQ9cWo">Youtube on Installing Android</a></li>
+		</ul>
+		<hr>
+		<h3 id="buildRunAndroid">D.8) Build and Run on Android - <a href="#toc">top</a></h3>
+		<p>To build your project to Android platform, please make sure that you have completed the instructions above. After the installation complete, you can build the project using:</p>
+		<pre class="brush: js; ruler: true;">
+			cd Ionstore
+			ionic build android</pre>
+			<p>This process will produce apk file on your <b>platforms/android</b>.</p>
+			<p>Now, let’s start running & testing on real device. Follow this step:</p>
+			<ol>
+			<li>Connect USB cable on your Android device to computer (Windows only)</li>
+			<li>Run the app on real device using:
+				<pre class="brush: js; ruler: false;">
+					ionic run android</pre></li>
+			<li>If you want to run Android on Mac, you can use android emulator or Genymotion</li>
+			<li>Emulate the app using:
+				<pre class="brush: js; ruler: false;">
+					ionic emulate android</pre></li></ol>
+			<p>You will see the app running on your real device or android emulator.</p>
+			<hr>
+		<h3 id="buildRunIOS">D.9) Build and Run on iOS - <a href="#toc">top</a></h3>
+		<p>To build your project to iOS platform, open your <b>Terminal</b> and type:</p>
+		<pre class="brush: js; ruler: true;">
+			cd Ionstore
+			ionic build ios</pre>
+		<p>The build process will produce <b>ios</b> folder in your <b>platforms</b> folder. Then, to run your app on emulator, please follow this step:</p>
+		<ol>
+			<li>Open <b>Ionstore/platforms/ios/ionicpremium.xcodeproj</b></li>
+			<li>Double click <b>ionicpremium.xcodeproj</b> file, it will open Xcode</li>
+			<li><b>Important to Xcode 7+</b>. To use Google Admob, you have to change <b>Bitcode</b> setting by following this step:
+				<ol><li>Click project property</li>
+					<li>Click build setting</li>
+					<li>Change enable <b>Bitcode</b> to <b>No</b>
+						<img class="img-res" src="assets/images/bitcode.png" alt="Setting Bitcode" /></li>
+					</ol>
+			<li>Your can run your app by selecting <b>iOS device</b> or <b>device emulator</b>, then click play button
+			<img class="img-res" src="assets/images/run-ios.png" alt="Running on iOS" /></li>
+			<li>You can also run the app using command line from Terminal, using
+				<pre class="brush: js; ruler: false;">
+					ionic emulate ios</pre></li>
+			<li>To emulate on specific iOS device (eq. iPhone 5s)
+				<pre class="brush: js; ruler: false;">
+					ionic emulate ios --target="iPhone-5s"</pre></li>
+		</ol>
+		<p>You will see the app running on iOS simulator.</p>
+
+		<hr>
+
+		<h3 id="woo"><strong>E) WooCommerce</strong> - <a href="#toc">top</a></h3>
+		<p><a href="http://www.woocommerce.com/">WooCommerce</a> is a free eCommerce plugin that allows you to sell anything, beautifully. Built to integrate seamlessly with WordPress, WooCommerce is the world’s favorite eCommerce solution that gives both store owners and developers complete control.</p>
+		<p>With endless flexibility and access to hundreds of free and premium WordPress extensions, WooCommerce now powers 30% of all online stores -- more than any other platform.</p>
+		<hr>
+		<h3 id="wooInstall">E.1) Installation - <a href="#toc">top</a></h3>
+		<p>If you have web hosting already and would like to install WooCommerce using the Wordpress Admin, follow this step:</p>
+		<ol>
+			<li>Login to your <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>Plugins</b> -> <b>Add New</b></li>
+			<li>Type "WooCommerce" in the search field and hit enter. Wait until it's found</li>
+			<li>Click <b>Install Now</b></li>
+			<li>Wait until WordPress completes the installation</li>
+			<li>After the installation finish, configure the WooCommerce</li>
+		</ol>
+		<p>Once WooCommerce is activated, the WooCommerce Onboarding Wizard can help you set up your shop. Select <b>Let’s Go!</b> to get started. Or select <b>Not Right Now</b> if you prefer to manually set up your WooCommerce shop.</p>
+		<img src="assets/images/onboarding-wizard-550x452.png" alt="Installing WooCommerce" />
+		<p>Reference: <a href="https://docs.woocommerce.com/document/installing-uninstalling-woocommerce/">Installing and Uninstalling WooCommerce</a></p>
+
+		<hr>
+		<h3 id="wooImport">E.2) Import Dummy Data - <a href="#toc">top</a></h3>
+		<p>WooCommerce provide dummy data products and categories for your eCommerce store. You can use it to see how the app app works with WooCommerce.</p>
+		<p>Dummy data for WooCommerce is located in a file called dummy-data.xml, which is located in the WooCommerce plugin directory. Once WooCommerce is installed, you can find it three ways:</p>
+		<ul>
+			<li>Use your cPanel or FTP, go to 'wp-content/plugins/woocommerce/dummy-data' and locate the dummy-data.xml file</li>
+			<li>Unpack or unzip the WooCommerce .zip file</li>
+			<li>Download from <a href="https://github.com/woothemes/woocommerce/tree/master/dummy-data">WooCommerce Github</a></li>
+		</ul>
+		<h4>Importing the WooCommerce Dummy Data</h4>
+		<ol>
+			<li>Login to your <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>Tools</b> -> <b>Import</b>. Select <b>WordPress</b>. <br><img class="img-res" src="assets/images/import-1.png" alt="Importing dummy data" /></li>
+			<li>If you do not have the WordPress importer installed, you will be prompted to install the importer and then proceed. You have the choice of installing manually or clicking the Install Now button. <b>Select</b> the <b>Choose a file from your computer</b> button and then the dummy-data.xml file you located above.<br><img class="img-res" src="assets/images/import-2.png" alt="Importing dummy data" /></li>
+			<li>You will be presented with a screen to import or select an author and various other options related to download and import file attachments</li>
+			<li><b>Select</b> who you want to make the author of the new products from the dropdown, such as your admin user, and <b>Select</b> the download and import file attachments checkbox. The latter will download all the images to your local server for use on the products<br><img class="img-res" src="assets/images/import-3.png" alt="Importing dummy data" /></li>
+			<li>Click <b>Submit</b> and your dummy data will be installed. You now have a working copy of WooCommerce with data.</li>
+		</ol>
+		<p>Reload and re-run your app to see the dummy data.</p>
+		<p>Reference: <a href="https://docs.woocommerce.com/document/importing-woocommerce-dummy-data/">Importing WooCommerce Dummy Data</a></p>
+		<hr>
+		<h3 id="wooShip">E.3) Shipping - <a href="#toc">top</a></h3>
+		<p>You can add multiple shipping method from WooCommerce and your apps. To add shipping, please follow these step:</p>
+		<ol>
+			<li>Login to your <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>WooCommerce</b> -> <b>Settings</b> -> <b>Shipping</b>. <br><img class="img-res" src="assets/images/shipping-1.png" alt="Installing WooCommerce" /></li>
+			<li>Select <b>Flat Rate</b> shipping method and click <b>Add shipping method</b><br><img class="img-res" src="assets/images/shipping-2.png" alt="Installing WooCommerce" /></li>
+			<li>Input your <b>cost</b>. Copy and save the <b>instance_id</b> variable from the URL<br><img class="img-res" src="assets/images/shipping-3.png" alt="Installing WooCommerce" /></li>
+			<li>Repeat the process above to create the <b>Worldwide Flat Rate</b></li>
+			<li>Input your <b>cost</b>. Copy and save the <b>instance_id</b> variable from the URL<br><img class="img-res" src="assets/images/shipping-4.png" alt="Installing WooCommerce" /></li>
+			<li>You can also add other shipping method (<b>Free Shipping</b> or <b>Local Pickup</b>)</li>
+			<li>Open your <b>js/config.js</b> file to configure the shipping method and id<br><img class="img-res" src="assets/images/shipping-5.png" alt="Installing WooCommerce" /></li>
+		</ol>
+		<p>Save and run your app on browser to see how the shipping method works.</p>
+
+		<hr>
+
+		<h3 id="wooPay">E.4) Payment - <a href="#toc">top</a></h3>
+		<p>Now, you have to active the payment method for your WooCommerce. To active the payment, please follow this step:</p>
+		<ol>
+			<li>Login to your <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>WooCommerce</b> -> <b>Settings</b> -> <b>Checkout</b></li>
+			<li>Enable the BACS settings. And input your bank account. Your bank account will be shown in the buyer email invoice<br><img class="img-res" src="assets/images/payment-1.png" alt="WooCommerce Payment Settings" /></li>
+			<li>Enable the PayPal settings and input your PayPal receiver email. You can thick the Sandbox mode when in development and un-thick the Sandbox when your WooCommerce is ready to publish<br><img class="img-res" src="assets/images/payment-2.png" alt="WooCommerce Payment Settings" /></li>
+			<li>Go to <b>WooCommerce</b> -> <b>Settings</b> -> <b>Checkout</b><br><img class="img-res" src="assets/images/payment-3.png" alt="WooCommerce Payment Settings" /></li>
+		</ol>
+		<p>Your PayPal is ready now in WooCommerce. Now, lets setting up PayPal for your mobile apps.</p>
+		<hr>
+
+		<h3 id="wooAPI">E.5) Rest API - <a href="#toc">top</a></h3>
+		<p>In order to get app works with your WooCommerce website, you have to activate the Rest API of WooCommerce. Please follow this step to do it:</p>
+		<ol>
+			<li>Login to your <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>WooCommerce</b> -> <b>Settings</b> -> <b>API</b>. Enable the REST API.<br><img class="img-res" src="assets/images/restapi-1.png" alt="Installing WooCommerce" /></li>
+			<li>Click <b>Add Key</b> button <br><img class="img-res" src="assets/images/restapi-2.png" alt="Installing WooCommerce" /></li>
+			<li>Input the <b>Description</b>, <b>User</b> and set the <b>Permission</b> to <b>Read/Write</b>. Then click <b>Generate API Key</b><br><img class="img-res" src="assets/images/restapi-3.png" alt="Installing WooCommerce" /></li>
+			<li>Copy the <b>Consumer Key</b> and <b>Consumer Secret</b> into the <b>js/ap.js</b> at constant variable (variable <b>ConsumerKey</b> & <b>ConsumerSecret</b>)<br><img class="img-res" src="assets/images/restapi-4.png" alt="Installing WooCommerce" /></li>
+		</ol>
+		<p>Now, your app ready to works.</p>
+		<hr>
+		<h3 id="jsonAPI"><strong>F) JSON API & JSON API User Plugins</strong> - <a href="#toc">top</a></h3>
+		<p><a href="https://wordpress.org/plugins/json-api" target="_blank">JSON API</a> & <a href="https://wordpress.org/plugins/json-api-user/">JSON API User</a> are a free wordpress plugin. We need these two plugins in order to allow user signup and signin in our app. Every user that has woocommerce account in you website, they can sigin also in your app. New customer can also signup from app.</p>
+		<hr>
+		<h3 id="jsonAPIInstall">F.1) Installation & Configuration - <a href="#toc">top</a></h3>
+		<p>To install these plugins, please follow these step:</p>
+		<ol>
+			<li>login into your WordPress Admin. Go to <b>Plugins</b> menu and <b>Add New</b></li>
+			<li>Type "JSON API" in the search field and hit enter. Wait until it's found</li>
+			<li>Click Install Now and wait until WordPress completes the installation</li>
+			<li>Active the <b>JSON API</b> plugin</li>
+			<li>Go to the <b>Plugin</b> menu again and repeat the process for "JSON API user" plugin</li>
+			<li>Now, we need to active the API so it can works with our app</li>
+			<li>Go to <b>Settings</b> and click <b>JSON API</b><br><img class="img-res" src="assets/images/jsonapi-1.png" alt="Installing JSON API Plugins" /></li>
+			<li>Make sure that the API User status is in <b>Active</b> position.<br><img class="img-res" src="assets/images/jsonapi-2.png" alt="Installing JSON API Plugins" /></li>
+		</ol>
+		<p>Now, your plugins are ready to work.</p>
+
+		<hr>
+
+		<h3 id="oneSignal"><strong>G) OneSignal Push Notification</strong> - <a href="#toc">top</a></h3>
+		<p>OneSignal is a high volume and reliable push notification system for mobile and web applications. We support all major native and mobile platforms by providing dedicated SDKs for each platform, a RESTful server API, and an online dashboard to send push notifications.</p>
+		<p>To use OneSignal with your app, firstly create Google API and then create account in OneSignal website.</p>
+		<hr>
+		<h3 id="googleAPI">G.1) Google API Registration - <a href="#toc">top</a></h3>
+		<p>We have to create an app in Google Developer to get the client ID that we will use in sending the push notification. Follow these step:</p>
+		<p>Let's create our app on Google Developer and setup the GCM (Google Cloud Messaging) to send the notifications.</p>
+		<ol>
+			<li>Visit the <a href="https://developers.google.com/mobile/add?platform=android&cntapi=gcm">Google Service Wizard</a></li>
+			<li>Type any name to create a new app, or select an existing Google app from the dropdown. In this example, we create an app named “Ionic Premium”<br><img class="img-res" src="assets/images/google-1.png" alt="Google API" /></li>
+			<li>Click <b>Choose and configure services</b> to continue</li>
+			<li>Select <b>Cloud Messaging</b> and then <b>Click enable Cloud Messaging</b><br><img class="img-res" src="assets/images/google-2.png" alt="Google API" /></li>
+			<li>It will show the server API key and GCM Sender ID</li>
+			<li>Add this <b>GCM Server API key into OneSignal</b> and <b>GCM Server ID</b> key into your <b>js/config.js</b> in the constant variable (variable <b>GCM_SenderID</b>)</li>
+		</ol>
+		<hr>
+		<h3 id="oneSignalConf">G.2) OneSignal Android Configuration - <a href="#toc">top</a></h3>
+		<p>In order to get OneSignal works on your apps, please create your apps on OneSignal by following these steps:</p>
+		<ol>
+			<li>Login to your OneSignal account</li>
+			<li>Create new app in OneSignal, type your app name and click <b>Create</b><br><img class="img-res" src="assets/images/onesignal-1.png" alt="OneSignal Configuration" /></li>
+			<li>Select Google Android (GCM) to configure and click <b>Next</b><br><img class="img-res" src="assets/images/onesignal-2.png" alt="OneSignal Configuration" /></li>
+			<li>Type your <b>GCM Server API</b> key (from <a href="#googleAPI">G.1. Google API Registration</b></a>) and click <b>Save</b><br><img class="img-res" src="assets/images/onesignal-3.png" alt="OneSignal Configuration" /></li>
+			<li>Select <b>Phonegap, Cordova, Ionic, Intel XDK</b> and click <b>Next</b><br><img class="img-res" src="assets/images/onesignal-4.png" alt="OneSignal Configuration" /></li>
+			<li>It will show your App ID. Copy this <b>OneSignal App ID</b> into your <b>js/config.js</b> in the constant variable (variable <b>OneSignalAppID</b>). Then run your app on <b>real android device</b>. When your run app successfully on device, click <b>Check Subsribed Users</b> to make sure that your OneSignal works with that device. Then click <b>Done</b>.<br><img class="img-res" src="assets/images/onesignal-5.png" alt="OneSignal Configuration" /></li>
+			<li>Congratulations! Your push notification is ready to use.<br><img class="img-res" src="assets/images/onesignal-6.png" alt="OneSignal Configuration" /></li>
+		</ol>
+		<p>Now, every Android device that install your app will appear in yoru OneSignal Dashboard. You can easily send them push notification from this dashboard directly or by schedule.</p>
+		<p>Note: Make sure that your device is connected with Internet connection when configuring OneSignal.</p>
+		<hr>
+		<h3 id="oneSignalSend">G.3) Send Push Notification - <a href="#toc">top</a></h3>
+		<p>It is very easy to send the notification to your customer. The notification can be promo code, new product release, useful info from your business or some useful info to your valuable customer. Please follow this step:</p>
+		<ol>
+			<li>Login to your OneSignal account</li>
+			<li>Click <b>New Message</b> from left menu. Then type your push <b>Title</b> and <b>Content</b>.<br><img class="img-res" src="assets/images/sendpush-1.png" alt="Sending push notification using OneSignal" /></li>
+			<li>If you want to use big picture as your push content, you can scroll below and input the image url <b>Big Picture</b> field.<br><img class="img-res" src="assets/images/sendpush-2.png" alt="Sending push notification using OneSignal" /></li>
+			<li>Scroll to bottom and click the <b>Preview</b> button>.<br><img class="img-res" src="assets/images/sendpush-3.png" alt="Sending push notification using OneSignal" /></li>
+			<li>You will see the summary of push content. Click <b>Send</b> button to send the notification.<br><img class="img-res" src="assets/images/sendpush-4.png" alt="Sending push notification using OneSignal" /></li>
+		</ol>
+		<p>Then you will see the notification from each of device that install you app.</p>
+		<img src="assets/images/sendpush-5.jpg" alt="Sending push notification using OneSignal" width="200"/>
+		<hr>
+		<h3 id="paypal"><strong>H) PayPal (only works on real device)</strong> - <a href="#toc">top</a></h3>
+		<p>PayPal is one of the most popular payment gateway in eCommerce industry nowadays. We concern about this and bringing this method into your eCommerce app. You need to have a PayPal account to use this feature. Create a new one, if you don't have yet. To create PayPal account, go to <a href="http://www.paypal.com">www.paypal.com</a>.</p>
+		<hr>
+
+		<h3 id="paypalSand">H.1) Sandbox Account - <a href="#toc">top</a></h3>
+		<p>Sandbox Account are your default <b>BUSINESS</b> and <b>PERSONAL</b> account to make a demo transaction. Business indicate the merchant account and personal indicate the buyer account.</p>
+		<img class="img-res" src="assets/images/sandbox-1.png" alt="Sandbox Account" />
+		<p>To change the password, profile, balance of Sandbox account, you can click the record.</p>
+
+		<hr>
+
+		<h3 id="paypalReg">H.2) Create App &  Sandbox Mode - <a href="#toc">top</a></h3>
+		<p>To get our apps work with PayPal. We need to create app (REST API) from PayPal. This Apps will generate Client ID and Secret that we used in our mobile app. We will used Sandbox mode to test the PayPal with our app. While using Sandbox, PayPal will not charge your balance. To create app in PayPal and active Sandbox, follow this step:</p>
+		<ol>
+			<li>Login to your <a href="https://developer.paypal.com">PayPal Developer</a> account</li>
+			<li>Go to <b>My Apps & Credentials</b> and click <b>Create App</b> button<br><img class="img-res" src="assets/images/paypal-1.png" alt="PayPal Sandbox Configuration" /></b></li>
+			<li>Type your <b>App Name</b>. Then the <b>Sandbox developer account</b> is your default PayPal business account for Sandbox. Now click <b>Create App</b>. button<br><img class="img-res" src="assets/images/paypal-2.png" alt="PayPal Sandbox Configuration" /></b></li>
+			<li>The <b>Client ID</b> will be shown on your screen. Make sure the <b>Sandbox</b> button at the top right is in active position<br><img class="img-res" src="assets/images/paypal-3.png" alt="PayPal Sandbox Configuration" /></li>
+			<li>Ok. You need to copy your <b>Client ID</b> and <b>Secret</b></li>
+			<li>Now, open <a href="https://www.base64encode.org">https://www.base64encode.org</a>. We have to encode these Client and Secret ID first</li>
+			<li>Make sure your format is <b>[client id]:[secret]</b><br><img class="img-res" src="assets/images/paypal-4.png" alt="PayPal Sandbox Configuration" /></li>
+			<li>Copy the base64 result to the constant variable in <b>js/config.js</b> file (variable <b>payPalSandboxClientSecretBase64</b>)</li>
+		</ol>
+		<p>Now you can use PayPal Sandbox in your app. Re-run your app in Android. When you make an order, choose PayPal as your payment method. Then, on the login screen. Use your default Sandbox personal account (for me, it is <b>mr.ilhami-buyer@gmail.com</b>). So, this Sandbox mode will demonstrate how the PayPal works when a buyer pay for their order for the merchant.</p>
+		<p>To view the transaction history, you can go to <a href="https://developer.paypal.com/developer/dashboard/sandbox/"><b>Sandbox Transactions</b></a> menu in the PayPal Developer Dashboard.</p>
+		<hr>
+
+		<h3 id="paypalProd">H.3) Live/Production Mode - <a href="#toc">top</a></h3>
+		<p>To use Live Mode, you can repeat the above process by selecting/activating <b>Live</b> button first. Then copy the Client ID and Secret into <a href="https://www.base64encode.org">https://www.base64encode.org</a>, and copy the base64 result to the constant variable in your <b>js/config.js</b> file (variable <b>payPalProductionClientSecretBase64</b>).</p>
+
+		<img class="img-res" src="assets/images/paypal-5.png" alt="PayPal Live Configuration" />
+
+		<p>To view the transaction history, you can go to <a href="https://developer.paypal.com/developer/dashboard/live/"><b>Live Transactions</b></a> menu in the PayPal Developer Dashboard.</p>
+		<hr>
+
+		<h3 id="slider"><strong>I) Slider Revolution Plugin</strong> - <a href="#toc">top</a></h3>
+		<p>Slider Revolution is an innovative, responsive WordPress Slider Plugin that displays your content the beautiful way. Whether it’s a Slider, Carousel, Hero Scene or even a whole Front Page, the visual, drag & drop editor will let you tell your own stories in no time!</p>
+		<p>I use this slider plugin into my eCommerce web, you get it from <a href="https://goo.gl/xP6OMs">here</a>. The API file that will connecting your app with this plugin is attached in your folder from CodeCanyon. You can also use another slider plugin, but it need to create a new API to grab the data from your database / MySQL.</p>
+		<hr>
+
+		<h3 id="sliderInstall">I.1) Installation - <a href="#toc">top</a></h3>
+		<p>To install these plugins, please follow these step:</p>
+		<ol>
+			<li>Get the plugin from <a href="https://goo.gl/xP6OMs">CodeCanyon</a>. Or you can also use <b>Slider Revolution</b> that has been included in your Themes.</li>
+			<li>Make sure that plugin has been activated.</li>
+			<li>Now, go to Slider Revolution menu and create new slider.</li>
+			<li>Save your slider id. You get it from your URL bar. Something like "page=revslider&view=slide&<b>id=1</b>" (1 is your slider id)</li>
+			<li>Add your slider image like this. <br><img class="img-res" src="assets/images/slider-1.png" alt="PayPal Sandbox Configuration" /></li>
+			<li>When you finished, save it.</li>
+		</ol>
+
+		<p>You can add as many as slide that you want.</p>
+		<hr>
+
+		<h3 id="sliderAPI">I.2) Setup API - <a href="#toc">top</a></h3>
+		<p>You can get the Slider API from <b>api/slides.php</b> from you downloaded files. Open it and set it up with your own database configuration.</p>
+		<hr>
+		<h3 id="sliderUpload">I.3) Upload API File into Your Server - <a href="#toc">top</a></h3>
+		<p>Next, please upload the <b>slides.php</b> file into your server. So it will be <b>http://yourweb.com/api/slides.php.</b></p>
+		<hr>
+
+		<h3 id="razor"><strong>J) RazorPay for India Only (Currency: Rupee)</strong> - <a href="#toc">top</a></h3>
+		<img class="img-res" src="assets/images/razor-1.png" alt="RazorPay Sandbox Configuration" />
+		<p>Payment gateway solution for India with robust, developer friendly API and simple economic pricing.</p>
+		<p><b>NOTE:</b> To get <b>RazorPay</b> works well in your app, you need to setup your currency to <b>Indian Rupee</b>. Go to <b>WooCommerce</b> -> <b>Settings</b> -> <b>Currency Options</b>.</p>
+		<hr>
+
+		<h3 id="razorIns">J.1) Installation - <a href="#toc">top</a></h3>
+		<p>To install these plugins, please follow these step:</p>
+		<ol>
+			<li>Get the plugin from <a href="https://wordpress.org/plugins/woo-razorpay/"></a></li>
+			<li>Or you can also get the plugin from <b>Wordpress Admin</b> panel</li>
+			<li>Go to <b>Plugins -> Add New</b></li>
+			<li>Type "RazorPay" in the search field and hit enter. Wait until it's found</li>
+			<li>Click <b>Install Now</b></li>
+			<li>Wait until WordPress completes the installation</li>
+		</ol>
+		<p>Active the RazorPay plugin and now you need to get the key.</p>
+		<hr>
+
+		<h3 id="razorReg">J.2) Registration - <a href="#toc">top</a></h3>
+		<p>Once <b>RazorPay</b> is activated, next you need to go to <b><a href="https://dashboard.razorpay.com/#/access/signup">RazorPay.com</a></b> to register your new account and get the key.</p>
+		<img class="img-res" src="assets/images/razor-2.png" alt="RazorPay Signup" />
+		<p>Complete all the signup form and get the activation link from your email.</p>
+
+		<hr>
+
+		<h3 id="razorTest">J.3) Get the Key (for <b>Test Mode</b>) - <a href="#toc">top</a></h3>
+		<p>To get the <b>Test Mode</b> API key from <b>RazorPay</b>, just login into your Dashboard and get the key from <b>Settings -> Api Key</b></p>
+		<img class="img-res" src="assets/images/razor-3.png" alt="RazorPay Key" />
+		<p>Copy paste your <b>Key ID</b> and <b>Secret Key</b> into your Wordpress RazorPay plugin.<br>Then, also copy paste your <b>Key ID</b> and <b>Secret Key</b> into your <b>js/config.js</b> in your app (variable <b>RazorKeyId</b> & <b>RazorSecretKey</b>).</p>
+		<hr>
+
+		<h3 id="razorLive">J.4) Get the Key (for <b>Live Mode</b>) - <a href="#toc">top</a></h3>
+		<p>To get the <b>Live Mode</b> key from <b>RazorPay</b>, just login into your Dashboard and go to <b>Settings</b> -> <b>Activation</b> and complete all the form for activation request. You will get the Live Mode key once your request has been approved.</p>
+
+		<hr>
+
+		<h3 id="ref"><strong>K) References</strong> - <a href="#toc">top</a></h3>
+		<p>To learn more about Ionic Framework, you can visit:</p>
+		<p><b>Ionic Getting started guide</b> <br><a href="http://ionicframework.com/getting-started" target="_blank">ionicframework.com/getting-started</a>
+		<p><b>Ionic Documentation</b> <br><a href="http://ionicframework.com/docs" target="_blank">ionicframework.com/docs</a>
+		<p><b>Ionic Community Forum </b> <br><a href="http://forum.ionicframework.com" target="_blank">forum.ionicframework.com</a>
+		<p><b>ngCordova Documentation</b> <br><a href="http://ngcordova.com/docs" target="_blank">http://ngcordova.com/docs</a>
+		<p><b>WooCommerce REST API</b> <br><a href="http://woothemes.github.io/woocommerce-rest-api-docs/" target="_blank">http://woothemes.github.io/woocommerce-rest-api-docs</a>
+		<hr>
+		<h3 id="support"><strong>J) Support</strong> - <a href="#toc">top</a></h3>
+		<p>When you have any issues related to Ionic, please don’t be hesitate to contact us using:</p>
+		<ul>
+			<li>Email - <a href="mailto:ionicpremium@gmail.com">ionicpremium@gmail.com</a> or <a href="mailto:envato@ionicpremium.com">envato@ionicpremium.com</a></li>
+			<li>Envato Account - <a href="http://codecanyon.net/user/ionicpremium" target="_blank">http://codecanyon.net/user/ionicpremium</a></li>
+		</ul>
+		<p>You can also visit: forum.ionicframework.com for more informations and any issues about <a href="http://forum.ionicframework.com" target="_blank">Ionic Framework</a>.</p>
+		<hr>
+
+		<h3 id="faq"><strong>L) FAQs</strong> - <a href="#toc">top</a></h3>
+		<p><b>1. Why my app can not show products on browser?</b></p>
+		<p>Please make sure that you have active the Chrome Cross-Origin extension. Please read <a href="#runBrowser">here</a>.</p>
+		<hr>
+		<p><b>2. How to add another payment gateway?</b></p>
+		<p>We concern about this, so we add Paypal as you payment gateway. You can also use Cash on Delivery and Bank Transfer. If you need another payment gateway, please wait our next released or simply hire freelancer to do custom work for you.</p>
+		<hr>
+		<p><b>3. How to add shipping API?</b></p>
+		<p>We are sorry that our app is not support for shipping API at the moment. You can use WooCommerce shipping default like Flat Rate or Local Pickup.</p>
+		<hr>
+		<p><b>4. Why paypal is not working for LIVE?</b></p>
+		<p>Please make sure that you have set the Paypal client secret for production and change the Paypal URL with <b>https://api.paypal.com/v1/oauth2/token</b> and <b>https://api.paypal.com/v1/payments/payment</b>.</p>
+		<hr>
+		<p><b>5. How to edit the project files?</b></p>
+		<span>You can use below editors to edit project file on your Windows and Mac :</span>
+			<ul>
+				<li><a href="http://www.sublimetext.com/" target="_blank">Sublimetext</a></li>
+				<li><a href="https://www.jetbrains.com/webstorm/" target="_blank">Webstorm</a></li>
+				<li><a href="http://brackets.io/" target="_blank">Brackets</a></li>
+				<li><a href="https://atom.io/" target="_blank">Atom</a></li>
+			</ul>
+			<p>By downloading and installing it to your computer.</p>
+		<hr>
+		<p><b>6. Why my app is blank / white screen on Android?</b></p>
+		<p>If you use Android 4.0, you need to install the <b>cordova-crosswalk-webview</b> by running this from you command:</p>
+		<pre>ionic plugin add cordova-plugin-crosswalk-webview</pre>
+		<p>After installing Crosswalk, you need to re-create the Android platform using:</p>
+		<pre>
+		ionic platform remove android
+		ionic platform add android
+		</pre>
+		<hr>
+		<p><b>7. How to change the icon and splash screen?</b></p>
+		<span>To change Icon and Splash Screen, you can do it by following this step:</span>
+			<ol>
+				<li>Open your cmd or Terminal, then:
+					<pre class="brush: javascript; ruler: true;">
+						cd Ionstore
+						ionic resources</pre>
+						<p>Ionic Framework will create resource directory at the root of the project. This <b>resource</b> directory contains image file for icon and splash screen.</p>
+				</li>
+				<li>Create your own icon by save an icon.png within resource directory. Change all of default icon file with your own icons file. The icon images dimension should follow the Ionic Framework recommended icon file dimension. This <a href="http://code.ionicframework.com/resources/icon.psd" target="_blank">icon template</a> provide the recommended size icon files.</li>
+				<li>Create your own splash screen by save an splash.png within resource directory. Change all of default splash screen file with your own splash screen file. The splash screen images dimension should follow the Ionic Framework recommended splash screen file dimension. This <a href="http://code.ionicframework.com/resources/splash.psd" target="_blank">splash screen template</a> provide the recommended size splash screen files.</li>
+				<li>Every time you change the icon or splash screen, deploy and run the project.</li>
+			</ol>
+		<hr>
+
+		<h3 id="credit"><strong>M) Sources & Credits</strong> - <a href="#toc">top</a></h3>
+		<p>Thanks for all of you that give me resources and inspirations.</p>
+		<ul>
+        <li><a href="http://https://angularjs.org/" target="_blank">Angular JS</a>
+        </li>
+        <li><a href="http://ionic.io" target="_blank">Ionic Framework</a>
+        </li>
+				<li><a href="https://ionicmaterial.com/" target="_blank">Ionic Material</a>
+        </li>
+        <li><a href="https://facebook.com/" target="_blank">Facebook</a>
+        </li>
+        <li><a href="http://blog.ionic.io/" target="_blank">Ionic Blog</a>
+        </li>
+        <li><a href="http://market.ionic.io/" target="_blank">Ionic Market</a>
+        </li>
+        <li><a href="http://ionicons.com" target="_blank">Ionic Icons</a>
+        </li>
+        <li><a href="http://http://ngcordova.com/" target="_blank">ngCordova</a>
+        </li>
+
+        <li><a href="https://cordova.apache.org/" target="_blank">Cordova</a>
+        </li>
+        <li><a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>
+        </li>
+        <li><a href="https://www.genymotion.com/" target="_blank">Genymotion</a>
+        </li>
+        <li><a href="https://www.apple.com/" target="_blank">Apple Yosemite, Xcode, iOS Simulator, Macbook Air and iPhones!</a>
+        </li>
+        <li><a href="https://www.google.com/" target="_blank">Google, Android and for all technologies</a>
+        </li>
+				<li><a href="https://www.youtube.com/" target="_blank">Youtube</a>
+        </li>
+        <li><a href="https://www.envato.com/" target="_blank">Envato</a>
+        </li>
+    </ul>
+		<hr>
+
+		<h3 id="version"><strong>N) Version History</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>
+				<b>Version 2.1.4</b> - Released December 23, 2016 
+				<ol>
+					<li><b>Issues Fixed:</b>
+						<ul>
+							<li>Fixed: Installing RazorPay plugin "cordova plugin add https://github.com/razorpay/razorpay-cordova.git"</li>
+							<li>Fixed: Button Email clicked on Contact Page (file controller.js: ContactCtrl)</li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<b>Version 2.1.3</b> - Released December 16, 2016
+				<ol>
+					<li><b>New Features:</b>
+						<ul>
+							<li>New Payment: RazorPay for India</li>
+							<li>Support multi languages</li>
+							<li>Coupon code in Checkout</li>
+						</ul>
+					</li>					
+					<li><b>Issues Fixed:</b>
+						<ul>
+							<li>Fixed: Add "gap://ready;" into <meta> tag in index.html (problem with Rate App in iOS 10)</li>
+							<li>Fixed: Edit all template files in order to support NEW multi languages feature</li>
+							<li>Add new js files: directive.js, filter.js, language.js, config.js</li>
+							<li>Edit style.js file to support coupon code form in Checkout</li>
+						</ul>
+					</li>
+					<li><b>Documentation:</b>
+						<ul>
+							<li>Add RazorPay - <a href="#razor">RazorPay for India Only (Currency: Rupee)</a></li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<b>Version 2.1.2</b> - Released November 29, 2016</b>
+				<ol>
+					<li><b>New Features:</b>
+						<ul>
+							<li>Set Currency Format from WooCommerce</li>
+							<li>Set Number Decimal for Product Price from WooCommerce</li>
+						</ul>
+					</li>
+					<li><b>Performances:</b>
+						<ul>
+							<li>Add plugin cordova-plugin-crosswalk-webview for Android 4.0 (for iOS build, you can remove this plugin)</li>
+						</ul>
+					</li>
+					<li><b>Issues Fixed:</b>
+						<ul>
+							<li>Fixed: Currency format in Confirm page</li>
+							<li>Fixed: Custom number decimal in all pages</li>
+							<li>Fixed: Product zoom in Product page</li>
+						</ul>
+					</li>
+					<li><b>Documentation:</b>
+						<ul>
+							<li>Edit App Configuration - <a href="#appConfiguration">App Configuration</a></li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<b>Version 2.1</b> - Released November 07, 2016</b>
+				<ol>
+					<li><b>New Feature:</b>
+						<ul>
+							<li>Edit Profile</li>
+							<li>Edit Billing Address</li>
+							<li>Edit Shipping Address</li>
+							<li>Rate App</li>
+							<li>Home Slider</li>
+							<li>Scroll to Top</li>
+						</ul>
+					</li>
+					<li><b>Performances:</b>
+						<ul>
+							<li>Add plugin cordova-plugin-apprate</li>
+							<li>Add library topscroller.js</li>
+						</ul>
+					</li>
+					<li><b>Issues fixed:</b>
+						<ul>
+							<li>Fixed: Blank screen on Android 4.0</li>
+						</ul>
+					</li>
+					<li><b>Documentation:</b>
+						<ul>
+							<li>Add slider - <a href="#slider">Slider Revolution Plugin</a></li>
+							<li>Add App Configuration menu - <a href="#appConfiguration">App Configuration</a></li>
+							<li>Add new FAQs item - <a href="#faq">FAQs</a></li>
+							<li>Remove Add Plugin menu</li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<b>Version 1.1</b> - Released September 2016</b>
+				<ol>
+					<li><b>New Feature:</b>
+						<ul>
+							<li>Wishlist</li>
+							<li>Blog and Blog Detail</li>
+							<li>COD payment method</li>
+							<li>Local Pickup shipping method</li>
+						</ul>
+					</li>
+					<li><b>Performances:</b>
+						<ul>
+							<li>Remove cordova crosswalk-webview</li>
+							<li>Add directive "focusMe" for QuickSearch</li>
+							<li>Add &ltpreference name="KeyboardDisplayRequiresUserAction" value="false" /&gt; in config.xml</li>
+							<li>Add &ltallow-navigation href="tel:*" /&gt; and &ltallow-intent href="tel:*" /&gt; in config.xml</li>
+						</ul>
+					</li>
+					<li><b>Issues fixed:</b>
+						<ul>
+							<li>Fixed: Currency issue (watch demo <a href="https://youtu.be/hX4otNB0MBc">https://youtu.be/hX4otNB0MBc</a>)</li>
+							<li>Fixed: Checkout using PayPal on iOS (change “_self” to “_blank” in ConfirmCtrl)</li>
+							<li>Fixed: Cancel/Done while Checkout using PayPal</li>
+							<li>Fixed: Call button in Contact</li>
+						</ul>
+					</li>
+					<li><b>Documentation:</b>
+						<ul>
+							<li>Adding cordova toast plugin - <a href="#addPlugin">Add Plugins</a></li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+			<li><b>Version 1.0</b> - Released August 19, 2016</li>
+		</ul>
+		<hr>
+
+		<p>Once again, thank you so much for purchasing Ionstore - Ionic Premium Woocommerce Full App. As I said at the beginning, I'd be glad to help you if you have any questions relating to this app. No guarantees, but I'll do my best to assist. If you have a more general question relating to the app on CodeCanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p>
+		<p class="append-bottom alt large"><strong>Ionic Premium</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
