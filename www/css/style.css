@@ -865,3 +865,12 @@ ion-spinner.onload{
     width: 100%;
     max-width: 100%;
 }
+
+.bar .search-bar .button{
+    min-width: 0;
+    width: auto;
+    padding: 0 0 0 0.5rem;
+}
+.bar .search-bar{
+    width: 100%;
+}
