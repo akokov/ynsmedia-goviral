@@ -169,15 +169,15 @@ angular.module('app.controllers', [])
 
         $ionicLoading.show();
 
-        if (Shop.homeSlider) {
-            Data.get('/api/slides.php')
-                .then(function (x) {
-                    $scope.slides = x;
-                    $ionicSlideBoxDelegate.update();
-                }, function (x) {
-                    $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
-                });
-        }
+        /*if (Shop.homeSlider) {
+         Data.get('/api/slides.php')
+         .then(function (x) {
+         $scope.slides = x;
+         $ionicSlideBoxDelegate.update();
+         }, function (x) {
+         $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
+         });
+         }*/
 
         var url = 'https://api.social-searcher.com/v2/search';
         $scope.searchParams = {
@@ -187,15 +187,52 @@ angular.module('app.controllers', [])
             network: 'twitter,youtube,instagram'
         };
 
-        $scope.clearResults = function(){
+        $scope.clearResults = function () {
             $scope.data = [];
             $scope.searchParams.q = '';
             $scope.selectedPostsCount = 0;
+            $scope.socialNetworks.forEach(function (network) {
+                network.selected = true;
+            });
         };
 
+        $scope.socialNetworks = [
+            {
+                name: 'twitter',
+                icon: 'ion-social-twitter',
+                color: 'calm',
+                button_color: 'button-calm',
+                selected: true
+            },
+            {
+                name: 'youtube',
+                icon: 'ion-social-youtube',
+                color: 'assertive',
+                button_color: 'button-assertive',
+                selected: true
+            },
+            {
+                name: 'instagram',
+                icon: 'ion-social-instagram',
+                color: 'positive',
+                button_color: 'button-positive',
+                selected: true
+            }];
+
+        $scope.toggleSocial = function (network) {
+            network.selected = !network.selected;
+            var selectedNetworks = $scope.socialNetworks.filter(function (network) {
+                return network.selected;
+            });
+            $scope.searchParams.network = selectedNetworks.map(function (network) {
+                return network.name
+            }).join(',');
+        };
+
+
         $scope.showModal = function () {
-            if($scope.data){
-                $scope.data.map(function(post){
+            if ($scope.data) {
+                $scope.data.map(function (post) {
                     post.selected = false;
                 });
             }
@@ -234,6 +271,8 @@ angular.module('app.controllers', [])
                 });
                 return network.length > 0;
             });
+
+            $scope.selectedPostsLenght = $rootScope.selectedPosts ? $rootScope.selectedPosts.length : 0;
         };
 
         $scope.doRefresh = function () {
@@ -279,7 +318,7 @@ angular.module('app.controllers', [])
         };
 
         $scope.search = function () {
-            if (!$scope.searchParams.q) {
+            if (!$scope.searchParams.q || !$scope.searchParams.network) {
                 return;
             }
 
@@ -293,8 +332,6 @@ angular.module('app.controllers', [])
                     post.postedDate = parseDate(post.posted);
                     return post;
                 });
-
-                console.log(response);
             });
         };
 
@@ -313,7 +350,10 @@ angular.module('app.controllers', [])
             $rootScope.selectedPosts = $scope.data.filter(function (post) {
                 return post.selected;
             }).map(function (post) {
-                return post.url;
+                return {
+                    network: post.network,
+                    url: post.url
+                };
             });
 
             $rootScope.selectedNetwork = $scope.data.reduce(function (array, post) {
@@ -469,52 +509,36 @@ angular.module('app.controllers', [])
             $ionicScrollDelegate.scrollTop();
         };
 
-        $scope.addItem = function (x, qty) {
-            var cart = window.localStorage.getItem(Shop.name + "-cart");
-            if (cart) {
-                var exist = false;
-                cart = JSON.parse(cart);
-                for (i in cart) {
-                    if (cart[i].id == x.id) {
-                        exist = true;
-                        cart[i].qty = cart[i].qty + qty;
-                        window.localStorage.setItem(Shop.name + "-cart", JSON.stringify(cart));
-                        $scope.showSuccess($rootScope.Dict.PRODUCT_ADDED);
-                        $scope.updateCart();
-                        break;
-                    }
-                }
-                if (!exist) {
-                    if (x.option)
-                        cart.push({
-                            id: x.id,
-                            title: x.title,
-                            price: x.price,
-                            img: x.featured_src,
-                            qty: 1,
-                            variations: {name: x.name, option: x.option}
-                        });
-                    else
-                        cart.push({id: x.id, title: x.title, price: x.price, img: x.featured_src, qty: 1});
-                    window.localStorage.setItem(Shop.name + "-cart", JSON.stringify(cart));
-                    $scope.showSuccess($rootScope.Dict.PRODUCT_ADDED);
-                }
-            } else {
-                var tmp = [];
-                if (x.option)
-                    tmp.push({
-                        id: x.id,
-                        title: x.title,
-                        price: x.price,
-                        img: x.featured_src,
-                        qty: 1,
-                        variations: {name: x.name, option: x.option}
-                    });
-                else
-                    tmp.push({id: x.id, title: x.title, price: x.price, img: x.featured_src, qty: 1});
-                window.localStorage.setItem(Shop.name + "-cart", JSON.stringify(tmp));
-                $scope.showSuccess($rootScope.Dict.PRODUCT_ADDED);
+        $scope.getSelectedPostUrls = function (title) {
+            var network = title.toLowerCase();
+            if (!$rootScope.selectedPosts || $rootScope.selectedPosts.length === 0) {
+                return '';
             }
+            return $rootScope.selectedPosts.filter(function(post){
+                return network.indexOf(post.network) !== -1;
+            }).map(function(post){
+                return post.url;
+            }).join('\n');
+        };
+
+        $scope.addItem = function (x, qty) {
+            var cart = [];
+
+            if (x.option)
+                cart.push({
+                    id: x.id,
+                    title: x.title,
+                    price: x.price,
+                    img: x.featured_src,
+                    selectedPosts: $scope.getSelectedPostUrls(x.title),
+                    qty: 1,
+                    variations: {name: x.name, option: x.option}
+                });
+            else {
+                cart.push({id: x.id, title: x.title, price: x.price, img: x.featured_src, qty: 1});
+            }
+            window.localStorage.setItem(Shop.name + "-cart", JSON.stringify(cart));
+            $scope.showSuccess($rootScope.Dict.PRODUCT_ADDED);
 
             $scope.updateCart();
             $state.go('app.checkout', {}, {reload: true});
@@ -716,61 +740,41 @@ angular.module('app.controllers', [])
     .controller('CheckoutCtrl', function ($scope, $state, $ionicModal, $http, $ionicLoading, $rootScope, Dict, WC, Shop) {
         //console.log($scope.user.shipping);
 
-        $scope.ship = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            country: '',
-            address_1: '',
-            address_2: '',
-            city: '',
-            state: '',
-            postcode: ''
-        };
+        var shipDetails = JSON.parse(window.localStorage.getItem(Shop.name + "user-details"));
+        var orderDetails = JSON.parse(window.localStorage.getItem(Shop.name + "-cart"));
+        $scope.ship = shipDetails || {
+                first_name: '',
+                last_name: '',
+                email: '',
+                note: '',
+                selectedPosts: ''
+            };
+        $scope.ship.selectedPosts = orderDetails[0].selectedPosts || '';
+        /*if ($scope.user.isLogin) {
+         $ionicLoading.show();
+         WC.api().get('customers/' + $scope.user.id, function (err, data, res) {
+         if (err) console.log(err);
+         var user = JSON.parse(res).customer;
+         $scope.billing = user.billing_address;
+         $scope.ship = user.shipping_address;
 
-        $scope.billing = {
-            phone: '',
-            email: ''
-        };
+         if ($scope.ship.country) {
+         $scope.tmp.country = $rootScope.Dict.TXT_LOADING + ' ...'
+         $http.get("https://api.theprintful.com/countries").success(function (x) {
+         var tmp = x.result;
+         for (var i in tmp) {
+         if (tmp[i].code == $scope.ship.country)
+         $scope.tmp.country = tmp[i].name
+         }
+         $ionicLoading.hide();
+         }).error(function (err) {
+         $scope.tmp.country = '';
+         });
+         }
 
-        $scope.tmp = {
-            note: '',
-            country: '',
-            coupon: ''
-        };
-
-        $scope.getSelectedPostUrls = function(){
-            if(!$rootScope.selectedPosts || $rootScope.selectedPosts.length === 0){
-                return '';
-            }
-            return $rootScope.selectedPosts.join('\n');
-        };
-
-        if ($scope.user.isLogin) {
-            $ionicLoading.show();
-            WC.api().get('customers/' + $scope.user.id, function (err, data, res) {
-                if (err) console.log(err);
-                var user = JSON.parse(res).customer;
-                $scope.billing = user.billing_address;
-                $scope.ship = user.shipping_address;
-
-                if ($scope.ship.country) {
-                    $scope.tmp.country = $rootScope.Dict.TXT_LOADING + ' ...'
-                    $http.get("https://api.theprintful.com/countries").success(function (x) {
-                        var tmp = x.result;
-                        for (var i in tmp) {
-                            if (tmp[i].code == $scope.ship.country)
-                                $scope.tmp.country = tmp[i].name
-                        }
-                        $ionicLoading.hide();
-                    }).error(function (err) {
-                        $scope.tmp.country = '';
-                    });
-                }
-
-                $ionicLoading.hide();
-            })
-        }
+         $ionicLoading.hide();
+         })
+         }*/
 
         $scope.shipping_lines = {
             method_id: '',
@@ -784,33 +788,33 @@ angular.module('app.controllers', [])
             paid: false
         };
 
-        $scope.showCountry = function () {
-            $ionicLoading.show();
-            $http.get("https://api.theprintful.com/countries").success(function (x) {
-                $scope.countries = x.result;
-                $ionicLoading.hide();
-            }).error(function (err) {
-                $ionicLoading.hide();
-                $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
-            });
+        /*$scope.showCountry = function () {
+         $ionicLoading.show();
+         $http.get("https://api.theprintful.com/countries").success(function (x) {
+         $scope.countries = x.result;
+         $ionicLoading.hide();
+         }).error(function (err) {
+         $ionicLoading.hide();
+         $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
+         });
 
-            $ionicModal.fromTemplateUrl("templates/modal-country.html", {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
-            });
-        };
+         $ionicModal.fromTemplateUrl("templates/modal-country.html", {
+         scope: $scope,
+         animation: 'slide-in-up'
+         }).then(function (modal) {
+         $scope.modal = modal;
+         $scope.modal.show();
+         });
+         };*/
 
         $scope.shipping = Shop.shipping;
         $scope.payment = Shop.payment;
 
-        $scope.setCountry = function (x) {
-            $scope.ship.country = x.code;
-            $scope.tmp.country = x.name;
-            $scope.closeModal();
-        }
+        /*$scope.setCountry = function (x) {
+         $scope.ship.country = x.code;
+         $scope.tmp.country = x.name;
+         $scope.closeModal();
+         };*/
 
         $scope.setShip = function (x) {
             $scope.shipping_lines = [{
@@ -818,7 +822,7 @@ angular.module('app.controllers', [])
                 method_title: x.name,
                 total: x.cost
             }];
-        }
+        };
 
         $scope.setPayment = function (x) {
             $scope.payment_details = {
@@ -826,77 +830,86 @@ angular.module('app.controllers', [])
                 method_title: x.name,
                 paid: false
             };
-        }
+        };
 
-        $scope.getCoupon = function () {
-            $ionicLoading.show();
+        /*$scope.getCoupon = function () {
+         $ionicLoading.show();
 
-            var cart = JSON.parse(window.localStorage.getItem(Shop.name + "-cart"));
-            var total = 0;
-            for (var i in cart)
-                total += cart[i].qty * cart[i].price;
+         var cart = JSON.parse(window.localStorage.getItem(Shop.name + "-cart"));
+         var total = 0;
+         for (var i in cart)
+         total += cart[i].qty * cart[i].price;
 
-            WC.api().get('coupons/code/' + $scope.tmp.coupon, function (err, data, res) {
-                var x = JSON.parse(res);
-                if (err) {
-                    $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
-                    return false;
-                }
+         WC.api().get('coupons/code/' + $scope.tmp.coupon, function (err, data, res) {
+         var x = JSON.parse(res);
+         if (err) {
+         $scope.showError($rootScope.Dict.TXT_CHECK_CONNECT);
+         return false;
+         }
 
-                if (x.errors) {
-                    $scope.showError(x.errors[0].message, 2000);
-                    $scope.tmp.coupon = '';
-                } else if (x.coupon.type == 'fixed_product' || x.coupon.type == 'percent_product') {
-                    $scope.showError($rootScope.Dict.TXT_COUPON_NOT_SUPPORT, 2000);
-                    $scope.tmp.coupon = '';
-                } else {
-                    if (x.coupon.expiry_date && new Date(x.coupon.expiry_date).getTime() < new Date().getTime()) {
-                        $scope.showError($rootScope.Dict.TXT_COUPON_EXP, 3000);
-                        $scope.tmp.coupon = '';
-                    } else if (x.coupon.minimum_amount > 0 && x.coupon.maximum_amount > 0 && (total < x.coupon.minimum_amount || total > x.coupon.maximum_amount)) {
-                        $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' > ' + $filter('currency')(x.coupon.minimum_amount, $scope.format, $scope.decimal) + ' & < ' + $filter('currency')(x.coupon.maximum_amount, $scope.format, $scope.decimal), 3000);
-                        $scope.tmp.coupon = '';
-                    } else if (x.coupon.minimum_amount > 0 && total < x.coupon.minimum_amount > 0) {
-                        $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' > ' + $filter('currency')(x.coupon.minimum_amount, $scope.format, $scope.decimal), 3000);
-                        $scope.tmp.coupon = '';
-                    } else if (x.coupon.maximum_amount > 0 && total > x.coupon.maximum_amount > 0) {
-                        $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' < ' + $filter('currency')(x.coupon.maximum_amount, $scope.format, $scope.decimal), 3000);
-                        $scope.tmp.coupon = '';
-                    } else {
-                        $scope.coupon_lines = {
-                            code: x.coupon.code,
-                            amount: x.coupon.amount,
-                            type: x.coupon.type,
-                            desc: x.coupon.description
-                        };
+         if (x.errors) {
+         $scope.showError(x.errors[0].message, 2000);
+         $scope.tmp.coupon = '';
+         } else if (x.coupon.type == 'fixed_product' || x.coupon.type == 'percent_product') {
+         $scope.showError($rootScope.Dict.TXT_COUPON_NOT_SUPPORT, 2000);
+         $scope.tmp.coupon = '';
+         } else {
+         if (x.coupon.expiry_date && new Date(x.coupon.expiry_date).getTime() < new Date().getTime()) {
+         $scope.showError($rootScope.Dict.TXT_COUPON_EXP, 3000);
+         $scope.tmp.coupon = '';
+         } else if (x.coupon.minimum_amount > 0 && x.coupon.maximum_amount > 0 && (total < x.coupon.minimum_amount || total > x.coupon.maximum_amount)) {
+         $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' > ' + $filter('currency')(x.coupon.minimum_amount, $scope.format, $scope.decimal) + ' & < ' + $filter('currency')(x.coupon.maximum_amount, $scope.format, $scope.decimal), 3000);
+         $scope.tmp.coupon = '';
+         } else if (x.coupon.minimum_amount > 0 && total < x.coupon.minimum_amount > 0) {
+         $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' > ' + $filter('currency')(x.coupon.minimum_amount, $scope.format, $scope.decimal), 3000);
+         $scope.tmp.coupon = '';
+         } else if (x.coupon.maximum_amount > 0 && total > x.coupon.maximum_amount > 0) {
+         $scope.showError($rootScope.Dict.TXT_COUPON_MIN_MAX + ' < ' + $filter('currency')(x.coupon.maximum_amount, $scope.format, $scope.decimal), 3000);
+         $scope.tmp.coupon = '';
+         } else {
+         $scope.coupon_lines = {
+         code: x.coupon.code,
+         amount: x.coupon.amount,
+         type: x.coupon.type,
+         desc: x.coupon.description
+         };
 
-                        $scope.showSuccess(x.coupon.description, 2000);
-                    }
-                }
+         $scope.showSuccess(x.coupon.description, 2000);
+         }
+         }
 
-            })
-        }
+         })
+         }
 
-        $scope.cancelCoupon = function () {
-            $scope.tmp.coupon = '';
-            $scope.coupon_lines = '';
-        }
+         $scope.cancelCoupon = function () {
+         $scope.tmp.coupon = '';
+         $scope.coupon_lines = '';
+         }*/
 
         $scope.closeModal = function () {
             $scope.modal.hide();
-        }
+        };
 
         $scope.doConfirm = function () {
+            $scope.setShip($scope.shipping[0]);
+            var userDetails = {
+                first_name: $scope.ship.first_name,
+                last_name: $scope.ship.last_name,
+                email: $scope.ship.email,
+                note: $scope.ship.note
+            };
             var order = {
                 payment_details: $scope.payment_details,
                 shipping_address: $scope.ship,
-                billing_address: $scope.billing,
+                //billing_address: $scope.billing,
                 shipping_lines: $scope.shipping_lines,
                 customer_id: $scope.user.id,
-                note: $scope.tmp.note,
-                coupon_lines: $scope.coupon_lines
-            }
+                note: $scope.ship.note//,
+                //coupon_lines: $scope.coupon_lines
+            };
+
             window.localStorage.setItem(Shop.name + "-order", JSON.stringify(order));
+            window.localStorage.setItem(Shop.name + "user-details", JSON.stringify(userDetails));
             $state.go("app.confirm");
         }
 

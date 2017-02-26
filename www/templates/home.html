@@ -1,8 +1,5 @@
 <ion-view view-title="{{appname}}">
 	<ion-nav-buttons side="right">
-        <div class="cart-total ink">
-            <button class="button ink icon-cart button-icon button-clear ion-ios-search-strong" ui-sref="quicksearch"></button>
-        </div>
         <div class="cart-total ink" ui-sref="app.cart">
             <div ng-if="totalCartItem>0">
                 <span>{{totalCartItem}}</span>
@@ -40,7 +37,10 @@
             </ion-scroll>
         </div>
         <div>
-            <button ng-click="showModal()" class="button button-energized">Find posts</button>
+            <button ng-click="showModal()" class="button button-energized button-full">Find posts</button>
+        </div>
+        <div ng-if="selectedPostsLenght">
+            <span class="text-center positive">{{selectedPostsLenght}} posts selected</span>
         </div>
         <div ng-if="products" class="item item-divider">
             {{$root.Dict.HOME_LATEST}}

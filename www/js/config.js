@@ -11,15 +11,15 @@ angular.module('app')
   homeSlider                          : true, // If you dont want to use home slider, set it to FALSE
   CurrencyFormat                      : true, // If you want to use currency format, set it to TRUE
   shipping                            : [
-                                          {id: 'flat_rate:4', name: 'Local Pickup', cost: 0},
+                                          {id: 'flat_rate:4', name: 'Local Pickup', cost: 0}/*,
                                           {id: 'flat_rate:3', name: 'Flat Rate', cost: 5},
-                                          {id: 'flat_rate:2', name: 'Worldwide Flat Rate', cost: 15}
+                                          {id: 'flat_rate:2', name: 'Worldwide Flat Rate', cost: 15}*/
                                         ],
   payment                             : [
-                                          {id: 'cod', name: 'Cash on Delivery', icon: 'fa fa-money', desc: 'Pay with cash upon delivery.'},
+                                          /*{id: 'cod', name: 'Cash on Delivery', icon: 'fa fa-money', desc: 'Pay with cash upon delivery.'},
                                           {id: 'bacs', name: 'Direct Bank Transfer', icon: 'fa fa-university', desc: 'You can pay using direct bank account'},
-                                          {id: 'paypal', name: 'Paypal', icon: 'fa fa-cc-paypal', desc: 'You can pay via Paypal and Credit Card'},
-                                          {id: 'razor', name: 'RazorPay', icon: 'fa fa-money', desc: 'Pay with RazorPay for Indian region only'} // Only for Indian currency (INR = Indian Rupee)
+                                          */{id: 'paypal', name: 'Paypal', icon: 'fa fa-cc-paypal', desc: 'You can pay via Paypal and Credit Card'},
+                                          /*{id: 'razor', name: 'RazorPay', icon: 'fa fa-money', desc: 'Pay with RazorPay for Indian region only'} // Only for Indian currency (INR = Indian Rupee)*/
                                         ],
 
   GCM_SenderID                        : 'xxxxxxxxxxxx', // Get this from https://console.developers.google.com
