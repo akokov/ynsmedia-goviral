@@ -39,7 +39,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova', 
   })
 
   // HOME
-  
+
   .state('app.dash', {
       url: '/dash',
       views: {
