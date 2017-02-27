@@ -3,7 +3,7 @@ angular.module('app')
 .constant('Shop', {
   version                             : '2.1.4 beta',
   name                                : 'GoViral',
-  URL                                 : 'https://goviral.site/store/',
+  URL                                 : 'https://goviral.site/store',
   EMAIL                               : 'admin@goviral.site',
   ConsumerKey                         : 'ck_c1912f801704da270bc7858d7005eda51a0358fc', // Get this from your WooCommerce
   ConsumerSecret                      : 'cs_9ca40158294aa88ebae8e9d6a4a8c6a3bb74474c', // Get this from your WooCommerce
