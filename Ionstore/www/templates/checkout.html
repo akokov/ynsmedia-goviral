@@ -6,14 +6,15 @@
            {{$root.Dict.CHECKOUT_SHIPPING_ADDRESS}}
         </div>
         <div class="padding">
-            <label class="item item-input item-floating-label">
+            <label class="item item-input item-floating-label" ng-show="!user.isLogin">
                 <input type="text" autocomplete="off" class="form-control" name="first_name" placeholder="{{$root.Dict.TXT_FIRSTNAME}}" required ng-model="ship.first_name">
-                <label class="control-label text-danger" ng-show="frm.first_name.$invalid && !frm.first_name.$pristine && ship.first_name ===''">
+                <label class="control-label text-danger"
+                       ng-show="frm.first_name.$invalid && !frm.first_name.$pristine && ship.first_name ===''">
                   <i class="icon ion-alert"></i>
                   {{$root.Dict.TXT_FIRSTNAME}} {{$root.Dict.TXT_CANT_EMPTY}}
                 </label>
             </label>
-            <label class="item item-input item-floating-label">
+            <label class="item item-input item-floating-label" ng-show="!user.isLogin">
                 <input type="text" autocomplete="off" class="form-control" name="last_name" placeholder="{{$root.Dict.TXT_LASTNAME}}" required ng-model="ship.last_name">
                 <label class="control-label text-danger" ng-show="frm.last_name.$invalid && !frm.last_name.$pristine && ship.last_name ===''">
                   <i class="icon ion-alert"></i>
@@ -21,8 +22,10 @@
                 </label>
             </label>
             <label class="item item-input item-floating-label">
-                <input type="email" autocomplete="off" class="form-control" name="email" placeholder="{{$root.Dict.TXT_EMAIL}}" required ng-model="ship.email">
-                <label for="email" class="control-label text-danger" ng-show="frm.email.$invalid && !frm.email.$pristine && ship.email === ''">
+                <input id="email" type="email" autocomplete="off" class="form-control" name="email" placeholder="{{$root.Dict.TXT_EMAIL}}"
+                       required ng-model="ship.email">
+                <label for="email" class="control-label text-danger"
+                       ng-show="frm.email.$invalid && !frm.email.$pristine && ship.email === ''">
                   <i class="icon ion-alert"></i>
                   {{$root.Dict.TXT_EMAIL}} {{$root.Dict.TXT_CANT_EMPTY}}
                 </label>

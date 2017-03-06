@@ -179,7 +179,6 @@ angular.module('app.controllers', [])
      });
      }*/
 
-    var url = 'https://api.social-searcher.com/v2/search';
     $scope.searchParams = {
       q: '',
       key: '5bdd32ba2dedf7c2434c157ad4607b58',
@@ -317,16 +316,27 @@ angular.module('app.controllers', [])
       return result;
     };
 
+    var encodeData = function (data) {
+      return Object.keys(data).map(function (key) {
+        return [key, data[key]].map(encodeURIComponent).join("=");
+      }).join("&");
+    };
+
     $scope.search = function () {
       if (!$scope.searchParams.q || !$scope.searchParams.network) {
         return;
       }
-
+      var proxyUrl = 'https://goviral.site/store/api/customProxy';
+      var url = 'https://api.social-searcher.com/v2/search';
+      var searchUrl = encodeURIComponent(url + '?' + encodeData($scope.searchParams));
       $scope.data = [];
       $http({
-        url: url,
-        method: 'GET',
-        params: $scope.searchParams
+        url: proxyUrl,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: {'type': 'GET', 'url': searchUrl}
       }).then(function (response) {
         $scope.data = response.data.posts.map(function (post) {
           post.postedDate = parseDate(post.posted);
@@ -1458,10 +1468,10 @@ angular.module('app.controllers', [])
       //$http.get(Shop.URL + "/api/get_nonce/?controller=user&method=register")
       $http.get(Shop.URL + "/api/get_nonce/?controller=user&method=register")
       /*$http.get(Shop.URL + "/api/get_nonce", {
-        params: {"controller": "user", "method": "register"},
-        headers: {'Accept': 'application/json', 'User-Agent': 'GoViral'},
-        cache: false
-      })*/
+       params: {"controller": "user", "method": "register"},
+       headers: {'Accept': 'application/json', 'User-Agent': 'GoViral'},
+       cache: false
+       })*/
         .success(function (x) {
           if (x.nonce) {
             //console.log($scope.u);
