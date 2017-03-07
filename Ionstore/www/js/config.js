@@ -30,8 +30,12 @@ angular.module('app')
   payPalProductionClientSecretBase64  : 'EF97ZAGEU_98zqCAmPgkn41gBXLPxn2TivQmeFOAoIadQGraU3Az97baJcKXipfIe7XDUdwpSJqbUtnj', // Change this Paypal Production with yours
 
                                         //  You need to change this url to GO LIVE!
+  payPalGetTokenURL                   : 'https://api.paypal.com/v1/oauth2/token', // to go live, use this: https://api.paypal.com/v1/oauth2/token
+  payPalMakePaymentURL                : 'https://api.paypal.com/v1/payments/payment', // to go live, use this: https://api.paypal.com/v1/payments/payment
+  /*
   payPalGetTokenURL                   : 'https://api.sandbox.paypal.com/v1/oauth2/token', // to go live, use this: https://api.paypal.com/v1/oauth2/token
   payPalMakePaymentURL                : 'https://api.sandbox.paypal.com/v1/payments/payment', // to go live, use this: https://api.paypal.com/v1/payments/payment
+  */
 
                                         // RazorPay only can be used for Indian currency (INR = Indian Rupee)
                                         // If you want use LIVE, get your LIVE key from RazorPay Dashboard and use it here                                        
