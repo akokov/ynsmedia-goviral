@@ -25,17 +25,22 @@ angular.module('app')
   GCM_SenderID                        : 'xxxxxxxxxxxx', // Get this from https://console.developers.google.com
   OneSignalAppID                      : 'xxxxxxxxxxxx', // Get this from https://onesignal.com
 
-                                        // Change this Paypal Sandbox with yours
+
+  // Change this Paypal Sandbox and LIVE with yours
+  payPalSandboxClientID               : 'AcsBDsHKSsVk1zGRBOo6H3CPW0AIguDAyBSb5Rh24MxEuBOmSYKxUZgElmWb4rKfqAd7Sw-FvmITraVX',
+  payPalLiveClientID                  : 'AVBfMXEgd-NVTMED7-yfYRN-XdXUtWQ8fta4Fdwtu-gejAm2WuVgTff6AjNEQfN8LqDVgojl0Wt9rRl0',
+
+  payPalEnv                           : 'PayPalEnvironmentProduction', // to go live, use this: 'PayPalEnvironmentProduction'
+
+                                          // Change this Paypal Sandbox with yours
   payPalSandboxClientSecretBase64     : 'EDJg8WD2luGrYJBO4W5kAo-UZJX_Es0SmkQrjCrRFWC_xORPTUDgMFJD4I5n-XVIqJ5QMrdjv70a6ehP',
   payPalProductionClientSecretBase64  : 'EF97ZAGEU_98zqCAmPgkn41gBXLPxn2TivQmeFOAoIadQGraU3Az97baJcKXipfIe7XDUdwpSJqbUtnj', // Change this Paypal Production with yours
 
                                         //  You need to change this url to GO LIVE!
   payPalGetTokenURL                   : 'https://api.paypal.com/v1/oauth2/token', // to go live, use this: https://api.paypal.com/v1/oauth2/token
   payPalMakePaymentURL                : 'https://api.paypal.com/v1/payments/payment', // to go live, use this: https://api.paypal.com/v1/payments/payment
-  /*
-  payPalGetTokenURL                   : 'https://api.sandbox.paypal.com/v1/oauth2/token', // to go live, use this: https://api.paypal.com/v1/oauth2/token
-  payPalMakePaymentURL                : 'https://api.sandbox.paypal.com/v1/payments/payment', // to go live, use this: https://api.paypal.com/v1/payments/payment
-  */
+
+
 
                                         // RazorPay only can be used for Indian currency (INR = Indian Rupee)
                                         // If you want use LIVE, get your LIVE key from RazorPay Dashboard and use it here                                        

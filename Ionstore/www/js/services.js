@@ -106,26 +106,42 @@ angular.module('app.services', [])
   })
 
   .service('Paypal', function ($http, $q) {
+    var proxyUrl = 'https://goviral.site/store/api/customProxy';
+    /*
+    var url = 'https://api.social-searcher.com/v2/search';
+    var searchUrl = url + '?' + encodeData($scope.searchParams);
+    $scope.data = [];
+    $http({
+      url: proxyUrl,
+      method: 'POST',
+      data: JSON.stringify({'type': 'GET', 'url': searchUrl})
+    }).then(function (response) {
+      $scope.data = response.data.posts.map(function (post) {
+        post.postedDate = parseDate(post.posted);
+        return post;
+      });
+    });
+    */
     return {
       getToken: function (url, clientSecretID) {
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
-            url: url,
+            url: proxyUrl,
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'Accept-Language': 'en_US',
               'Authorization': 'Basic ' + clientSecretID
             },
-            transformRequest: function (obj) {
+            /*transformRequest: function (obj) {
               var p, str;
               str = [];
               for (p in obj) {
                 str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
               }
               return str.join('&');
-            },
-            data: {grant_type: 'client_credentials'}
+            },*/
+            data: JSON.stringify({'grant_type': 'client_credentials', 'type': 'POST', 'url': url})
           })
             .success(function (x) {
               resolve(x);
@@ -136,15 +152,17 @@ angular.module('app.services', [])
         })
       },
       makePayment: function (url, data, token) {
+        data.type = 'POST';
+        data.url = url;
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
-            url: url,
+            url: proxyUrl,
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + token
             },
-            data: data
+            data: JSON.stringify(data)
           })
             .success(function (x) {
               resolve(x);
@@ -155,15 +173,19 @@ angular.module('app.services', [])
         })
       },
       execute: function (url, payerId, token) {
+        var data = {};
+        data.payer_id = payerId;
+        data.type = 'POST';
+        data.url = url;
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
-            url: url,
+            url: proxyUrl,
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + token
             },
-            data: {payer_id: payerId}
+            data: JSON.stringify(data)
           })
             .success(function (x) {
               resolve(x);
