@@ -30,7 +30,7 @@ angular.module('app')
   payPalSandboxClientID               : 'AcsBDsHKSsVk1zGRBOo6H3CPW0AIguDAyBSb5Rh24MxEuBOmSYKxUZgElmWb4rKfqAd7Sw-FvmITraVX',
   payPalLiveClientID                  : 'AVBfMXEgd-NVTMED7-yfYRN-XdXUtWQ8fta4Fdwtu-gejAm2WuVgTff6AjNEQfN8LqDVgojl0Wt9rRl0',
 
-  payPalEnv                           : 'PayPalEnvironmentProduction', // to go live, use this: 'PayPalEnvironmentProduction'
+  payPalEnv                           : 'PayPalEnvironmentProduction', // to go live, use this: 'PayPalEnvironmentProduction' / 'PayPalEnvironmentSandbox'
 
                                           // Change this Paypal Sandbox with yours
   payPalSandboxClientSecretBase64     : 'EDJg8WD2luGrYJBO4W5kAo-UZJX_Es0SmkQrjCrRFWC_xORPTUDgMFJD4I5n-XVIqJ5QMrdjv70a6ehP',

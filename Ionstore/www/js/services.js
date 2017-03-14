@@ -123,7 +123,7 @@ angular.module('app.services', [])
     });
     */
     return {
-      getToken: function (url, clientSecretID) {
+      getToken: function (url, clientSecretID, payPalEnv) {
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
@@ -131,7 +131,7 @@ angular.module('app.services', [])
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'Accept-Language': 'en_US',
-              'Authorization': 'Basic ' + clientSecretID
+              //'Authorization': 'Basic ' + clientSecretID
             },
             /*transformRequest: function (obj) {
               var p, str;
@@ -141,7 +141,7 @@ angular.module('app.services', [])
               }
               return str.join('&');
             },*/
-            data: JSON.stringify({'grant_type': 'client_credentials', 'type': 'POST', 'url': url})
+            data: JSON.stringify({'grant_type': 'client_credentials', 'type': 'POST', 'url': url, 'PayPalEnv': payPalEnv})
           })
             .success(function (x) {
               resolve(x);
