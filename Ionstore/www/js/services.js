@@ -154,12 +154,13 @@ angular.module('app.services', [])
       makePayment: function (url, data, token) {
         data.type = 'POST';
         data.url = url;
+        data.Authorization = 'Bearer ' + token;
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
             url: proxyUrl,
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/x-www-form-urlencoded',
               'Authorization': 'Bearer ' + token
             },
             data: JSON.stringify(data)
@@ -177,12 +178,13 @@ angular.module('app.services', [])
         data.payer_id = payerId;
         data.type = 'POST';
         data.url = url;
+        data.Authorization = 'Bearer ' + token
         return $q(function (resolve, reject) {
           $http({
             method: 'POST',
             url: proxyUrl,
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/x-www-form-urlencoded',
               'Authorization': 'Bearer ' + token
             },
             data: JSON.stringify(data)
